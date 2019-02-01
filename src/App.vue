@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <router-view />
     <h1>{{ title }}</h1>
     <Navbar />
     <AllFriends :friends='friends' @delete ='deleteFriend'/>
@@ -9,10 +10,10 @@
 </template>
 
 <script>
-import Navbar from './Navbar'
-import AllFriends from './AllFriends'
-import OnlineFriends from './OnlineFriends'
-import Blogs from './Blogs'
+import Navbar from '@/components/Navbar'
+import AllFriends from '@/components/AllFriends'
+import OnlineFriends from '@/components/OnlineFriends'
+import Blogs from '@/components/Blogs'
 export default {
   name: 'App',
   components: {
@@ -29,15 +30,15 @@ export default {
         { name: 'bb', online: false },
         { name: 'cc', online: true },
         { name: 'dd', online: false }
-      ],
-      methods: {
-        deletefriend (payload) {
-          console.log(payload.friend)
-          this.friends = this.friends.filter(friend => {
-            return friend.name !== payload.name
-          })
-        }
-      }
+      ]
+    }
+  },
+  methods: {
+    deletefriend (payload) {
+      console.log(payload.friend)
+      // this.friends = this.friends.filter(friend => {
+      //   return friend.name !== payload.name
+      // })
     }
   }
 }
